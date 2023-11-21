@@ -9,16 +9,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:community_care/main.dart';
 
 void main() {
-  testWidgets('Renders CommunityCareApp', (WidgetTester tester) async {
+  testWidgets('Test your app widgets', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(CommunityCareApp());
+    await tester.pumpWidget(MyApp());
 
-    // Verify that the title text is present.
-    expect(find.text('CommunityCare'), findsOneWidget);
+    // You can add test cases here to check if certain widgets are present,
+    // interact with them, and make assertions about the state of the app.
 
-    // Replace the below lines with your actual widget testing logic
-    // Example: expect(find.text('YourWidgetText'), findsOneWidget);
+    // For example:
+    expect(find.text('Neighborly Assistance Hub'), findsOneWidget);
 
-    // You can add more test cases as needed.
+    // You can add more test cases based on your UI elements.
+
+    // Example of interacting with a widget:
+    // await tester.tap(find.byType(YourWidgetType));
+    // await tester.pump();
+
+    // Example of making an assertion about the state of the app:
+    // expect(find.text('Expected Text'), findsOneWidget);
   });
 }
