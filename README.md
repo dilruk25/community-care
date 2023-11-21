@@ -1,4 +1,4 @@
-# neighborly_assistance_hub
+# community_care
 
 A new Flutter project.
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(CommunityCareApp());
 }
 
 class Task {
@@ -30,75 +30,36 @@ class TaskList extends StatelessWidget {
   }
 }
 
-class MyApp extends StatelessWidget {
+class CommunityCareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Neighborly Assistance Hub',
+      title: 'CommunityCare',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: CommunityCareHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class CommunityCareHomePage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _CommunityCareHomePageState createState() => _CommunityCareHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
   List<Task> tasks = [
     Task(title: 'Grocery Shopping', description: 'Help with grocery shopping'),
     Task(title: 'Yard Work', description: 'Assistance with yard maintenance'),
   ];
 
-  // Global key to access the scaffold state
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // Placeholder content for the main screen
-  Widget _buildMainContent() {
-    return TaskList(tasks: tasks);
-  }
-
-  // Function to handle opening the side navigation bar
-  void _openDrawer() {
-    _scaffoldKey.currentState?.openDrawer();
-  }
-
-  // Function to handle search box tap
-  void _openSearchDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Search Box Tapped!'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey, // Assign the scaffold key
       appBar: AppBar(
-        title: Text('Neighborly Assistance Hub'),
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: _openDrawer, // Open side navigation bar
-        ),
+        title: Text('CommunityCare'),
         actions: [
-          // Logo Space
           Container(
             padding: EdgeInsets.all(8.0),
             child: Image.asset(
@@ -107,40 +68,102 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 24.0,
             ),
           ),
-          // Search Bar
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: InkWell(
-              onTap: _openSearchDialog, // Open search dialog
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Search Box Tapped!'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
               child: Text('Search for...'),
             ),
           ),
         ],
       ),
-      body: _buildMainContent(),
+      body: TaskList(tasks: tasks),
       drawer: Drawer(
-        // Side Navigation Bar
         child: ListView(
           children: [
+            UserAccountsDrawerHeader(
+              accountName: Text('John Doe'),
+              accountEmail: Text('john.doe@example.com'),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Icon(Icons.person),
+              ),
+            ),
             ListTile(
-              title: Text('Menu Item 1'),
+              title: Text('Login'),
               onTap: () {
-                // Add code to handle side navigation item tap.
-                Navigator.of(context).pop(); // Close the drawer
+                // Handle login tap.
               },
             ),
             ListTile(
-              title: Text('Menu Item 2'),
+              title: Text('Chat'),
               onTap: () {
-                // Add code to handle side navigation item tap.
-                Navigator.of(context).pop(); // Close the drawer
+                // Handle chat tap.
+              },
+            ),
+            ListTile(
+              title: Text('Profile Details'),
+              onTap: () {
+                // Handle profile details tap.
+              },
+            ),
+            ListTile(
+              title: Text('Community Calendar'),
+              onTap: () {
+                // Handle community calendar tap.
+              },
+            ),
+            ListTile(
+              title: Text('Assistance Requests'),
+              onTap: () {
+                // Handle assistance requests tap.
+              },
+            ),
+            ListTile(
+              title: Text('Notifications'),
+              onTap: () {
+                // Handle notifications tap.
+              },
+            ),
+            ListTile(
+              title: Text('Log Out'),
+              onTap: () {
+                // Handle log out tap.
+              },
+            ),
+            ListTile(
+              title: Text('Family Surname'),
+              onTap: () {
+                // Handle family surname tap.
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                // Handle settings tap.
               },
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        // Bottom Navigation Bar
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -156,9 +179,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
         selectedItemColor: Colors.blue,
-        currentIndex: 0, // Change this to highlight the selected item
+        currentIndex: 0,
         onTap: (index) {
-          // Add code to handle bottom navigation item tap.
+          // Handle bottom navigation item tap.
+          if (index == 1) {
+            // Navigate to Chat section
+            // Implement your logic here
+          } else if (index == 2) {
+            // Navigate to Profile section
+            // Implement your logic here
+          }
         },
       ),
     );

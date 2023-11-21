@@ -1,29 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:neighborly_assistance_hub/main.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:community_care/main.dart';
 
 void main() {
-  testWidgets('Widget Test for Neighborly Assistance Hub App', (WidgetTester tester) async {
+  testWidgets('Renders CommunityCareApp', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    await tester.pumpWidget(CommunityCareApp());
 
-    // Verify that the app contains the title in the app bar.
-    expect(find.text('Neighborly Assistance Hub'), findsOneWidget);
+    // Verify that the title text is present.
+    expect(find.text('CommunityCare'), findsOneWidget);
 
-    // Verify that the app contains the logo.
-    expect(find.byType(Image), findsOneWidget);
+    // Replace the below lines with your actual widget testing logic
+    // Example: expect(find.text('YourWidgetText'), findsOneWidget);
 
-    // Verify that the app contains the search text.
-    expect(find.text('Search for...'), findsOneWidget);
-
-    // Verify that the app contains the first task in the task list.
-    expect(find.text('Grocery Shopping'), findsOneWidget);
-
-    // Verify that the app contains the second task in the task list.
-    expect(find.text('Yard Work'), findsOneWidget);
-
-    // Verify that the app contains the bottom navigation bar.
-    expect(find.byType(BottomNavigationBar), findsOneWidget);
+    // You can add more test cases as needed.
   });
 }

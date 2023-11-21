@@ -1,6 +1,6 @@
 {
-    "name": "neighborly_assistance_hub",
-    "short_name": "neighborly_assistance_hub",
+    "name": "community_care",
+    "short_name": "community_care",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
