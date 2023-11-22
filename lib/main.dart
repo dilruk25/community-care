@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+//Developed by DilrukHansaka Jayasinghe
 void main() {
   runApp(CommunityCareApp());
 }
