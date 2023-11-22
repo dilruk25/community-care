@@ -30,6 +30,34 @@ class TaskList extends StatelessWidget {
   }
 }
 
+class CommunityChatPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Community Chat'),
+      ),
+      body: Center(
+        child: Text('Welcome to Community Chat!'),
+      ),
+    );
+  }
+}
+
+class UserProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('User Profile'),
+      ),
+      body: Center(
+        child: Text('User Profile Details'),
+      ),
+    );
+  }
+}
+
 class CommunityCareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -107,55 +135,58 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
               ),
             ),
             ListTile(
-              title: Text('Login'),
+              title: Text('Community News'),
               onTap: () {
                 // Handle login tap.
               },
             ),
             ListTile(
-              title: Text('Chat'),
+              title: Text('Community Calender'),
               onTap: () {
                 // Handle chat tap.
               },
             ),
             ListTile(
-              title: Text('Profile Details'),
+              title: Text('Community Chat'),
               onTap: () {
-                // Handle profile details tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
             ListTile(
-              title: Text('Community Calendar'),
+              title: Text('Community Requests'),
               onTap: () {
                 // Handle community calendar tap.
               },
             ),
             ListTile(
-              title: Text('Assistance Requests'),
+              title: Text('Community Jobs'),
               onTap: () {
                 // Handle assistance requests tap.
               },
             ),
             ListTile(
-              title: Text('Notifications'),
+              title: Text('Community Business '),
               onTap: () {
                 // Handle notifications tap.
               },
             ),
             ListTile(
-              title: Text('Log Out'),
+              title: Text('Community Map'),
               onTap: () {
                 // Handle log out tap.
               },
             ),
             ListTile(
-              title: Text('Family Surname'),
+              title: Text('Emergency'),
               onTap: () {
                 // Handle family surname tap.
               },
             ),
             ListTile(
-              title: Text('Settings'),
+              title: Text('Log Out'),
               onTap: () {
                 // Handle settings tap.
               },
@@ -183,11 +214,15 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
         onTap: (index) {
           // Handle bottom navigation item tap.
           if (index == 1) {
-            // Navigate to Chat section
-            // Implement your logic here
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CommunityChatPage()),
+            );
           } else if (index == 2) {
-            // Navigate to Profile section
-            // Implement your logic here
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserProfilePage()),
+            );
           }
         },
       ),
