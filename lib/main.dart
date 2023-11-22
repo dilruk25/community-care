@@ -30,6 +30,81 @@ class TaskList extends StatelessWidget {
   }
 }
 
+class NewsContainer extends StatelessWidget {
+  final String title;
+  final String content;
+
+  NewsContainer({required this.title, required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      padding: EdgeInsets.all(16.0),
+      margin: EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+            ),
+          ),
+          SizedBox(height: 8.0),
+          Text(
+            content,
+            style: TextStyle(color: Colors.white),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RequestsContainer extends StatelessWidget {
+  final String title;
+  final String description;
+
+  RequestsContainer({required this.title, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      padding: EdgeInsets.all(16.0),
+      margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+      width: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+            ),
+          ),
+          SizedBox(height: 8.0),
+          Text(
+            description,
+            style: TextStyle(color: Colors.white),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class CommunityChatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -122,7 +197,48 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
           ),
         ],
       ),
-      body: TaskList(tasks: tasks),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 16.0),
+          Text(
+            'News',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                NewsContainer(
+                  title: 'Welfare Meeting',
+                  content: 'Will be at 5.00 PM today.',
+                ),
+                NewsContainer(
+                  title: 'Power Cut',
+                  content: '8.00 AM - 12.00 PM\n23/11/2023',
+                ),
+                NewsContainer(
+                  title: 'Garbage Collection',
+                  content: 'At 7.00 AM\n24/11/2023',
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 16.0),
+          Text(
+            'Requests',
+            style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+          ),
+          RequestsContainer(
+            title: 'Grocery Shopping',
+            description: 'Help with Grocery shopping',
+          ),
+          RequestsContainer(
+            title: 'Yard Work',
+            description: 'Assistance with yard maintenance',
+          ),
+        ],
+      ),
       drawer: Drawer(
         child: ListView(
           children: [
@@ -133,6 +249,15 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
                 backgroundColor: Colors.white,
                 child: Icon(Icons.person),
               ),
+            ),
+            ListTile(
+              title: Text('Home'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
+              },
             ),
             ListTile(
               title: Text('Community News'),
@@ -158,37 +283,55 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
             ListTile(
               title: Text('Community Requests'),
               onTap: () {
-                // Handle community calendar tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
             ListTile(
               title: Text('Community Jobs'),
               onTap: () {
-                // Handle assistance requests tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
             ListTile(
-              title: Text('Community Business '),
+              title: Text('Community Business'),
               onTap: () {
-                // Handle notifications tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
             ListTile(
               title: Text('Community Map'),
               onTap: () {
-                // Handle log out tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
             ListTile(
               title: Text('Emergency'),
               onTap: () {
-                // Handle family surname tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
             ListTile(
               title: Text('Log Out'),
               onTap: () {
-                // Handle settings tap.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
+                );
               },
             ),
           ],
