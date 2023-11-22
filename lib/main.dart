@@ -11,6 +11,20 @@ class Task {
   Task({required this.title, required this.description});
 }
 
+class UserProfile {
+  final String name;
+  final String surname;
+  final String address;
+  final String mobileNumber;
+
+  UserProfile({
+    required this.name,
+    required this.surname,
+    required this.address,
+    required this.mobileNumber,
+  });
+}
+
 class TaskList extends StatelessWidget {
   final List<Task> tasks;
 
@@ -120,14 +134,37 @@ class CommunityChatPage extends StatelessWidget {
 }
 
 class UserProfilePage extends StatelessWidget {
+  final UserProfile user;
+
+  UserProfilePage({required this.user});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('User Profile'),
       ),
-      body: Center(
-        child: Text('User Profile Details'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Name: ${user.name} ${user.surname}',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'Address: ${user.address}',
+              style: TextStyle(fontSize: 16.0),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              'Mobile Number: ${user.mobileNumber}',
+              style: TextStyle(fontSize: 16.0),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -152,10 +189,13 @@ class CommunityCareHomePage extends StatefulWidget {
 }
 
 class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
-  List<Task> tasks = [
-    Task(title: 'Grocery Shopping', description: 'Help with grocery shopping'),
-    Task(title: 'Yard Work', description: 'Assistance with yard maintenance'),
-  ];
+
+  UserProfile userProfile = UserProfile(
+    name: 'John',
+    surname: 'Doe',
+    address: '123 Main St, Cityville',
+    mobileNumber: '123-456-7890',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -163,37 +203,11 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
       appBar: AppBar(
         title: Text('CommunityCare'),
         actions: [
-          Container(
-            padding: EdgeInsets.all(8.0),
-            child: Image.asset(
-              'assets/logo.png', // Replace with your logo image asset
-              height: 24.0,
-              width: 24.0,
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: InkWell(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text('Search Box Tapped!'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: Text('OK'),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
-              child: Text('Search for...'),
-            ),
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              // TODO: Implement settings functionality
+            },
           ),
         ],
       ),
@@ -239,11 +253,12 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
           ),
         ],
       ),
+     
       drawer: Drawer(
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
-              accountName: Text('John Doe'),
+              accountName: Text('${userProfile.name} ${userProfile.surname}'),
               accountEmail: Text('john.doe@example.com'),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
@@ -253,10 +268,7 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
             ListTile(
               title: Text('Home'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle login tap.
               },
             ),
             ListTile(
@@ -266,7 +278,7 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
               },
             ),
             ListTile(
-              title: Text('Community Calender'),
+              title: Text('Community Calendar'),
               onTap: () {
                 // Handle chat tap.
               },
@@ -328,10 +340,7 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
             ListTile(
               title: Text('Log Out'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle settings tap.
               },
             ),
           ],
@@ -364,7 +373,7 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
           } else if (index == 2) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UserProfilePage()),
+              MaterialPageRoute(builder: (context) => UserProfilePage(user: userProfile)),
             );
           }
         },
