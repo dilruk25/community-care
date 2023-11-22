@@ -268,19 +268,19 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
             ListTile(
               title: Text('Home'),
               onTap: () {
-                // Handle login tap.
+                // Handle Home tap.
               },
             ),
             ListTile(
               title: Text('Community News'),
               onTap: () {
-                // Handle login tap.
+                // Handle Community News tap.
               },
             ),
             ListTile(
               title: Text('Community Calendar'),
               onTap: () {
-                // Handle chat tap.
+                // Handle Community Calender tap.
               },
             ),
             ListTile(
@@ -295,52 +295,37 @@ class _CommunityCareHomePageState extends State<CommunityCareHomePage> {
             ListTile(
               title: Text('Community Requests'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle Community Requests tap.
               },
             ),
             ListTile(
               title: Text('Community Jobs'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle Community Jobs tap.
               },
             ),
             ListTile(
               title: Text('Community Business'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle Community Business tap.
               },
             ),
             ListTile(
               title: Text('Community Map'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle Community Map tap.
               },
             ),
             ListTile(
               title: Text('Emergency'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CommunityChatPage()),
-                );
+                // Handle Emergency tap.
               },
             ),
             ListTile(
               title: Text('Log Out'),
               onTap: () {
-                // Handle settings tap.
+                // Handle Log Out tap.
               },
             ),
           ],
