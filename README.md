@@ -1,4 +1,4 @@
-Project Name: CommunityCare
+<h1>CommunityCare</h1>
 
 Description:
 CommunityCare is a mobile app designed to foster neighbourly assistance and strengthen community bonds. Whether it's helping with grocery shopping, yard work, or providing support during challenging times, CommunityCare connects local residents in need with willing volunteers. With a user-friendly interface, real-time updates, and features like chat and community events, CommunityCare makes it easy for neighbours to lend a helping hand and build a more resilient, caring community.
